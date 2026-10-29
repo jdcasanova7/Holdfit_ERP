@@ -1,6 +1,6 @@
 # **1\. Informações sobre a empresa**
 
-	A empresa escolhida e então criada é a Hold Fit Atividades de Condicionamento Físico LTDA, uma academia pequena com intenção de crescimento, foi aberta em 10/02/2023 sendo sediada na Zona Leste. 
+A empresa escolhida e então criada é a Hold Fit Atividades de Condicionamento Físico LTDA, uma academia pequena com intenção de crescimento, foi aberta em 10/02/2023 sendo sediada na Zona Leste. 
 
 Por ser uma academia de bairro, se encontra em uma situação de gestão antiga e complicada. Fazendo uso de planilhas, documentos espalhados e decisões apenas pelo diálogo, a Hold Fit decidiu dar o próximo passo e montar um sistema para gerenciar toda a empresa, focando na eficiência de controle dos alunos e professores, além de dar suporte a questões financeiras.
 
@@ -18,7 +18,7 @@ Em casos de alunos inadimplentes ou professores demitidos, o acesso à academia 
 
 # **2\. Justificativa da escolha**
 
-	A Hold Fit foi escolhida para o projeto pois foi identificado falhas na estrutura da empresa e em sua gestão de informações, o que é ideal para o desenvolvimento de um sistema.
+A Hold Fit foi escolhida para o projeto pois foi identificado falhas na estrutura da empresa e em sua gestão de informações, o que é ideal para o desenvolvimento de um sistema.
 
 Primeiramente, a empresa possui processos organizados e válidos que devem ser analisados para um sistema funcional, como, por exemplo, a gestão de frequência de alunos e a verificação de credenciais técnicas (CREF) de professores, entre outros.
 
