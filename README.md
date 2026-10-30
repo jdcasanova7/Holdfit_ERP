@@ -137,15 +137,15 @@ O DER foi revisado em relação à primeira entrega. Ele descreve as entidades (
 
  Documentação e diagramas:
 -  Fluxograma e DER: [`docs/diagramas/`](docs/diagramas/)
--  Entidades e atributos: [`docs/diagramas/entidades-e-atributos.md`](docs/diagramas/entidades-e-atributos.md)
--  Relacionamentos e cardinalidades: [`docs/diagramas/relacionamentos-e-cardinalidades.md`](docs/diagramas/relacionamentos-e-cardinalidades.md)
--  Principais decisões de modelagem (entidades, PKs, relacionamentos): [`docs/modelagem/principais-decisoes.md`](docs/modelagem/principais-decisoes.md)
 
 ## 7. Modelo lógico
 
 O modelo lógico converte o DER em tabelas relacionais, definindo atributos, chaves primárias (inclusive compostas), chaves estrangeiras, tabelas associativas para relacionamentos N:N (como `TURMA_ALUNO` e `CONTRATO`) e restrições de integridade referencial.
 
  Veja o modelo lógico completo em [`docs/modelo-logico/`](docs/modelo-logico/).
+-  Entidades e atributos: [`docs/modelo-logico/entidades-e-atributos.md`](docs/modelo-logico/entidades-e-atributos.md)
+-  Relacionamentos e cardinalidades: [`docs/modelo-logico/relacionamentos-e-cardinalidades.md`](docs/modelo-logico/relacionamentos-e-cardinalidades.md)
+-  Principais decisões de modelagem (justificativas sobre entidades, PKs, relacionamentos): [`docs/modelagem/principais-decisoes.md`](docs/modelagem/principais-decisoes.md)
 
 ## 8. Normalização
 
@@ -253,9 +253,9 @@ Hold-Fit-ERP/
 │
 ├── docs/
 │   ├── requisitos/            # Empresa, processos, RF, RNF, RN e políticas
-│   ├── diagramas/             # Fluxograma, DER, entidades e relacionamentos
+│   ├── diagramas/             # Fluxograma, DER
 │   ├── modelagem/             # Principais decisões de modelagem
-│   ├── modelo-logico/         # Modelo lógico relacional
+│   ├── modelo-logico/         # Modelo lógico relacional, entidades e relacionamentos, etc
 │   ├── normalizacao/          # 1FN, 2FN e 3FN documentadas
 │   ├── dicionario-dados/      # Dicionário de Dados
 │   ├── massa-de-dados/        # Prompts de IA e validação dos dados
