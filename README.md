@@ -163,7 +163,7 @@ A normalização foi documentada com situações reais do projeto, seguindo o fo
 
 O dicionário descreve a estrutura efetivamente implementada. Para cada atributo, registra: tabela, nome, descrição, tipo, tamanho, PK, FK, `NULL`, `UNIQUE`, `DEFAULT` e regra/restrição.
 
- Consulte: [`docs/dicionario-dados/`](docs/dicionario-dados/)
+ Consulte: [`docs/dicionario-dados/Dicionário de Dados.xlsx`](docs/dicionario-dados/Dicionário de Dados.xlsx)
 
 ## 10. Implementação SQL
 
