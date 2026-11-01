@@ -1,0 +1,233 @@
+Table EMPRESA {
+  cnpj varchar(19) [pk]
+  endereco varchar(70) [not null]
+  nome_fantasia varchar(70) [not null, unique]
+  horario_ab time [not null]
+  horario_fc time [not null]
+  telefone varchar(21)
+  email varchar(70) [unique]
+}
+
+Table PESSOA {
+  cpf varchar(14) [pk]
+  nome varchar(100) [not null]
+  idade date [not null]
+  endereco varchar(100)
+  telefone varchar(21)
+  email varchar(70)
+  genero varchar(20)
+  dt_nasci date [not null]
+}
+
+Table ALUNO {
+  rgm int [pk]
+  cpf varchar(14) [not null, unique]
+  cod_matricula varchar(30) [not null, unique]
+  data_in date [not null]
+  data_f date
+  status_al varchar(20) [not null]
+}
+
+Table FUNCIONARIO {
+  id_funcionario int [pk, unique]
+  cpf varchar(14) [not null, unique]
+  id_depto int [not null]
+  salario decimal(10,2) [not null]
+  funcao varchar(50)
+  carga_h decimal(5,2)
+  h_entrada time
+  h_saida time
+  data_admissao date
+  data_demissao date
+}
+
+Table CARGO{
+  id_cargo autoincrement [pk, not null, unique]
+  nome_cargo varchar(15) [not null]
+  descricao_cargo varchar(40)
+}
+
+Table PROFESSOR {
+  id_cref varchar(20) [pk]
+  id_funcionario int [not null, unique]
+  especialidade varchar(50)
+  categoria_cref varchar(2) [not null]
+  responsavel_tecnico boolean [not null, default: false]
+}
+
+Table DEPENDENTE {
+  cpf_dependente varchar(14) [pk]
+  cpf_responsavel varchar(14) [not null]
+  parentesco varchar(15) [not null]
+}
+
+Table DEPARTAMENTO {
+  id_depto int [pk]
+  email varchar(70)
+  telefone varchar(21)
+  descricao varchar(100)
+  hr_func int
+  hr_i int
+  hr_f int
+}
+
+Table MODALIDADE {
+  id_modalidade int [pk]
+  nome varchar(70) [not null]
+  duracao int [not null]
+  status varchar(20) [not null]
+}
+
+Table TURMA {
+  id_turma int [pk]
+  id_modalidade int [not null]
+  id_cref varchar(20) [not null]
+  horario_i time [not null]
+  horario_f time [not null]
+  sala varchar(40)
+  limitealunos int
+}
+
+Table TURMA_ALUNO {
+  id_matricula int [pk, not null, unique]
+  id_turma int [not null, unique]
+  rgm int [not null]
+  dt_matricula date [not null]
+}
+
+Table FREQUENCIA {
+  id_matricula int [not null, unique]
+  id_turma int [not null, unique]
+  dt_aula date [not null]
+  status_presenca varchar(20) [not null]
+
+  indexes {
+    (dt_aula, id_matricula, id_turma) [pk]
+  }
+}
+
+Table PLANOS {
+  id_plano int [pk]
+  nome varchar(50) [not null]
+  descricao varchar(150)
+  duracao_meses int
+  valor_plano float
+  dt_i date [not null]
+  dt_f date
+}
+
+Table PLANO_MODALIDADE {
+  id_plano int [not null]
+  id_modalidade int [not null]
+
+  indexes {
+    (id_plano, id_modalidade) [pk]
+  }
+}
+
+Table CONTRATO {
+  rgm int [not null]
+  id_plano int [not null]
+  valor_mensal_contratado decimal(10,2) [not null]
+  desconto decimal(5,2)
+  status char(1)
+  dt_i date [not null]
+  dt_f date [not null]
+
+  indexes {
+    (rgm, id_plano) [pk]
+  }
+}
+
+Table FORNECEDOR {
+  cnpj varchar(19) [pk, unique]
+  nome_fantasia varchar(70) [not null]
+  status varchar(20) [not null]
+  servico_prestado varchar(150)
+}
+
+Table EQUIPAMENTO {
+  id_equipamento int [pk, not null, unique]
+  cnpj int
+  nome varchar(70) [not null]
+  descricao varchar(150)
+  preco decimal(10,2)
+  estoque int
+}
+
+Table DESPESAS {
+  id_despesas int [pk]
+  id_fornecedor int
+  nome varchar(70) [not null]
+  descricao varchar(150)
+  validade date
+  valor decimal(10,2) [not null]
+  quantidade int
+}
+
+Table CONTA {
+  id_numconta int [pk]
+  cnpj_empresa varchar(19) [not null]
+  saldo decimal(12,2) [not null]
+  qnt_pendente decimal(12,2)
+  qnt_pago decimal(12,2)
+}
+
+Table CONTAS_PAGAR {
+  id_pagamento int [pk]
+  id_numconta int [not null]
+  id_despesas int
+  dt_pagamento date
+  dt_vencimento date [not null]
+  tipo varchar(50) [not null]
+  valor decimal(10,2) [not null]
+  status varchar(20) [not null]
+}
+
+Table CONTAS_RECEBER {
+  id_recebimento int [pk]
+  id_numconta int [not null]
+  id_contrato int [not null]
+  dt_recebimento date
+  dt_vencimento date [not null]
+  tipo varchar(50) [not null]
+  valor decimal(10,2) [not null]
+  status varchar(20) [not null]
+}
+
+Table PAGAMENTO {
+  id_pagamento int [pk]
+  id_numconta int [not null]
+  data_pagamento date [not null]
+  valor decimal(10,2) [not null]
+  tipo varchar(50) [not null]
+}
+
+
+Ref: EMPRESA.cnpj < CONTA.cnpj_empresa
+Ref: PESSOA.cpf - ALUNO.cpf
+Ref: PESSOA.cpf - FUNCIONARIO.cpf
+Ref: FUNCIONARIO.id_funcionario - PROFESSOR.id_funcionario
+Ref: PESSOA.cpf - DEPENDENTE.cpf_dependente
+Ref: PESSOA.cpf < DEPENDENTE.cpf_responsavel
+Ref: DEPARTAMENTO.id_depto < FUNCIONARIO.id_depto
+Ref: MODALIDADE.id_modalidade < TURMA.id_modalidade
+Ref: PROFESSOR.id_cref < TURMA.id_cref
+Ref: TURMA.id_turma - TURMA_ALUNO.id_turma
+Ref: ALUNO.rgm < TURMA_ALUNO.rgm
+Ref: TURMA_ALUNO.id_turma > FREQUENCIA.id_turma
+Ref: TURMA_ALUNO.rgm > FREQUENCIA.id_turma
+Ref: ALUNO.rgm < CONTRATO.rgm
+Ref: PLANOS.id_plano < CONTRATO.id_plano
+Ref: PLANOS.id_plano < PLANO_MODALIDADE.id_plano
+Ref: MODALIDADE.id_modalidade < PLANO_MODALIDADE.id_modalidade
+Ref: FORNECEDOR.cnpj ?< EQUIPAMENTO.id_equipamento
+Ref: FORNECEDOR.cnpj ?< DESPESAS.id_fornecedor
+Ref: CONTA.id_numconta < CONTAS_PAGAR.id_numconta
+Ref: CONTA.id_numconta < CONTAS_RECEBER.id_numconta
+Ref: DESPESAS.id_despesas ?< CONTAS_PAGAR.id_despesas
+Ref: EQUIPAMENTO.id_equipamento ?< CONTAS_PAGAR.id_pagamento
+Ref: ALUNO.rgm < CONTAS_RECEBER.id_recebimento
+Ref: CONTA.id_numconta < PAGAMENTO.id_numconta
+Ref: CONTAS_PAGAR.id_pagamento - PAGAMENTO.id_pagamento
+Ref: DEPARTAMENTO.id_depto > CARGO.id_cargo
