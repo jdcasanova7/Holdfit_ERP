@@ -1,0 +1,60 @@
+# 14. Consultas Gerais e Auditoria
+
+## 14.1. Auditoria de Contas a Pagar e Pagamentos
+
+### O que esta consulta está verificando?
+
+A consulta compara as tabelas `CONTAS_PAGAR` e `PAGAMENTO` para identificar divergências entre o controle das contas a pagar e os registros financeiros cadastrados.
+
+A auditoria verifica os seguintes aspectos:
+
+- **Status inconsistente:** identifica contas marcadas como pendentes ou atrasadas que possuem um registro na tabela `PAGAMENTO`, ou contas marcadas como pagas sem esse registro.
+- **Data inconsistente:** verifica se a data registrada em `CONTAS_PAGAR` corresponde à data registrada em `PAGAMENTO`.
+- **Valor inconsistente:** verifica se os valores registrados nas duas tabelas são iguais.
+- **Data ausente:** identifica contas marcadas como pagas que não possuem uma data de pagamento preenchida.
+
+O `LEFT JOIN` permite manter a conta no resultado mesmo quando não existe um registro correspondente em `PAGAMENTO`, o que é essencial para identificar esse tipo de inconsistência.
+
+### Por que essa auditoria é adequada?
+
+No script do banco de dados, existe um exemplo concreto que merece investigação: a conta de pagamento de **ID 1** está com o status `Pendente`, possui uma data de pagamento preenchida e tem um registro correspondente na tabela `PAGAMENTO`.
+
+A consulta deve identificar essa situação como uma possível divergência entre o status da conta e o registro financeiro.
+
+Também vale conferir a conta de **ID 8**, que possui uma data de pagamento preenchida, mas não tem um registro correspondente na tabela `PAGAMENTO`.
+
+Esses casos demonstram que a consulta verifica problemas potenciais a partir dos próprios dados cadastrados, em vez de apenas cumprir uma etapa de documentação.
+
+> **Observação técnica:** a consulta considera que todo registro em `PAGAMENTO` representa um pagamento efetivamente realizado. Se o sistema permitir pagamentos parciais ou registros de estorno, as regras da auditoria precisarão ser ajustadas. Além disso, o `CASE` apresenta apenas a primeira inconsistência encontrada em cada registro; caso existam várias divergências, as demais precisarão ser verificadas separadamente.
+
+---
+
+## 14.2. Auditoria de Alunos e Contratos
+
+### O que esta consulta está verificando?
+
+A consulta compara as tabelas `ALUNO` e `CONTRATO` para identificar alunos ativos que não possuem um contrato vigente.
+
+A auditoria verifica os seguintes aspectos:
+
+- **Aluno sem contrato:** identifica alunos ativos que não possuem contrato com status ativo.
+- **Contrato fora da vigência:** verifica se o aluno possui um contrato com status ativo, mas cujas datas estão fora do período de validade.
+- **Consistência cadastral:** ajuda a identificar possíveis divergências entre a situação do aluno e seus contratos.
+
+O `LEFT JOIN` permite manter todos os alunos ativos no resultado, inclusive aqueles que não possuem contrato vigente.
+
+### Por que essa auditoria é adequada?
+
+A auditoria verifica se os alunos cadastrados como ativos possuem um contrato válido para o período atual. Essa conferência é importante para manter a consistência entre os registros acadêmicos e contratuais da **Hold Fit**.
+
+A consulta também ajuda a localizar situações que precisam ser investigadas, como:
+
+- Alunos ativos sem contrato vigente.
+- Contratos cujo período de validade já terminou.
+- Possíveis divergências entre o status do aluno e o status do contrato.
+
+Esses casos podem indicar cadastros desatualizados ou a necessidade de revisar o status do aluno ou do contrato.
+
+> **Observação técnica:** a consulta considera a data atual do MySQL e o status `A` como indicativo de contrato ativo. Como o banco de dados não impede que um aluno esteja ativo sem contrato vigente, os resultados devem ser analisados antes de concluir que existe uma inconsistência.
+
+
