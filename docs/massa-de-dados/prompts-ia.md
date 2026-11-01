@@ -1,4 +1,6 @@
-Analise o arquivo SQL anexado, referente ao banco de dados MySQL do sistema de gestão da academia Hold Fit, e desenvolva novas **consultas de auditoria de dados**, seguindo o mesmo estilo, nível de detalhamento e estrutura das auditorias já documentadas.
+O prompt enviado à IA com a funcionalidade de criar um conjunto de dados funcional foi o seguinte:
+
+"Analise o arquivo SQL anexado, referente ao banco de dados MySQL do sistema de gestão da academia Hold Fit, e desenvolva novas **consultas de auditoria de dados**, seguindo o mesmo estilo, nível de detalhamento e estrutura das auditorias já documentadas.
 
 ### Objetivo
 Criar auditorias que identifiquem possíveis inconsistências nos dados cadastrados, verificando relacionamentos entre tabelas, regras de negócio, datas, status e integridade das informações.
@@ -45,4 +47,4 @@ Para cada auditoria, apresente nesta ordem:
 
 Comece pela auditoria número 16, mantendo a numeração sequencial do projeto.
 
-Gere inicialmente três auditorias diferentes entre si. Antes de apresentá-las, confira se os relacionamentos utilizados existem, se as condições SQL estão corretas e se cada consulta realmente identifica a situação descrita. Priorize auditorias úteis, específicas e justificáveis, em vez de criar consultas apenas para aumentar a quantidade.
+Gere inicialmente três auditorias diferentes entre si. Antes de apresentá-las, confira se os relacionamentos utilizados existem, se as condições SQL estão corretas e se cada consulta realmente identifica a situação descrita. Priorize auditorias úteis, específicas e justificáveis, em vez de criar consultas apenas para aumentar a quantidade."
