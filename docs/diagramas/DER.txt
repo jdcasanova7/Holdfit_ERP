@@ -91,7 +91,7 @@ Table TURMA {
 Table TURMA_ALUNO {
   id_matricula int [pk, not null, unique]
   id_turma int [not null, unique]
-  rgm int [not null]
+  rgm int [not null, unique]
   dt_matricula date [not null]
 }
 
