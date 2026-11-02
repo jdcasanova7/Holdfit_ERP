@@ -1,6 +1,6 @@
-# 14. Consultas Gerais e Auditoria
+# Consultas Gerais e Auditoria
 
-## 14.1. Auditoria de Contas a Pagar e Pagamentos
+## Auditoria de Contas a Pagar e Pagamentos
 
 ### O que esta consulta está verificando?
 
@@ -29,7 +29,7 @@ Esses casos demonstram que a consulta verifica problemas potenciais a partir dos
 
 ---
 
-## 14.2. Auditoria de Alunos e Contratos
+## Auditoria de Alunos e Contratos
 
 ### O que esta consulta está verificando?
 
