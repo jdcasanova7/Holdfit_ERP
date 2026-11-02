@@ -136,7 +136,7 @@ O DER foi revisado em relação à primeira entrega. Ele descreve as entidades (
 | **Cobrança do plano** | Contas a receber ligadas a aluno e plano, com redundância | `PLANO` + `CONTRATO` + `CONTA_RECEBER` | Evita redundância e melhora o controle de inadimplência |
 
  Documentação e diagramas:
--  Fluxograma e DER: [`docs/diagramas/`](docs/diagramas/)
+-  DER: [`docs/diagramas/`](docs/diagramas/)
 
 ## 7. Modelo lógico
 
@@ -253,7 +253,7 @@ Hold-Fit-ERP/
 │
 ├── docs/
 │   ├── requisitos/            # Empresa, processos, RF, RNF, RN e políticas
-│   ├── diagramas/             # Fluxograma, DER
+│   ├── diagramas/             # DER
 │   ├── modelagem/             # Principais decisões de modelagem
 │   ├── modelo-logico/         # Modelo lógico relacional, entidades e relacionamentos, etc
 │   ├── normalizacao/          # 1FN, 2FN e 3FN documentadas
